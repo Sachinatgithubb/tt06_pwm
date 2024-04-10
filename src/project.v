@@ -23,7 +23,8 @@ module tt_um_PWM_Generator_Verilog (
   
     //assign increase_duty=ui_in[0];
     //assign ui_in[1]=ui_in[1];
-    assign PWM_OUT=uo_out[0];
+    //assign uo_out[0]=uo_out;
+    //assign uo_out=uo_out[0];
      //assign ui_in[7:2]=0;    
     //assign ui_out[7:1]=0;
     
@@ -71,7 +72,7 @@ module tt_um_PWM_Generator_Verilog (
    if(counter_PWM>=9) 
     counter_PWM <= 0;
  end
- assign PWM_OUT = counter_PWM < DUTY_CYCLE ? 1:0;
+ assign uo_out = counter_PWM < DUTY_CYCLE ? 1:0;
 endmodule
 // Debouncing DFFs for push buttons on FPGA
 module DFF_PWM(clk,en,D,Q);
