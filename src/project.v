@@ -20,6 +20,9 @@ module tt_um_PWM_Generator_Verilog (
   //assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
   assign uio_out = 0;
   assign uio_oe  = 0;
+    input wire increase_duty;
+    input wire decrease_duty;
+    output wire PWM_OUT;
 
 assign ui_in[0]=increase_duty;
     assign ui_in[1]=decrease_duty;
