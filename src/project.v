@@ -21,11 +21,10 @@ module tt_um_PWM_Generator_Verilog (
     assign uio_out = 0;
     assign uio_oe  = 0;
   
-    assign increase_duty=ui_in[0];
-    assign decrease_duty=ui_in[1];
+    //assign increase_duty=ui_in[0];
+    //assign ui_in[1]=ui_in[1];
     assign PWM_OUT=uo_out[0];
-    
-    //assign ui_in[7:2]=0;    
+     //assign ui_in[7:2]=0;    
     //assign ui_out[7:1]=0;
     
  wire slow_clk_enable; // slow clock enable signal for debouncing FFs
@@ -50,11 +49,11 @@ module tt_um_PWM_Generator_Verilog (
  assign slow_clk_enable = counter_debounce == 1 ?1:0;
  // for running simulation -- comment when running on FPGA
  // debouncing FFs for increasing button
- DFF_PWM PWM_DFF1(clk,slow_clk_enable,increase_duty,tmp1);
+    DFF_PWM PWM_DFF1(clk,slow_clk_enable,ui_in[0],tmp1);
  DFF_PWM PWM_DFF2(clk,slow_clk_enable,tmp1, tmp2); 
  assign duty_inc =  tmp1 & (~ tmp2) & slow_clk_enable;
  // debouncing FFs for decreasing button
- DFF_PWM PWM_DFF3(clk,slow_clk_enable,decrease_duty, tmp3);
+ DFF_PWM PWM_DFF3(clk,slow_clk_enable,ui_in[1], tmp3);
  DFF_PWM PWM_DFF4(clk,slow_clk_enable,tmp3, tmp4); 
  assign duty_dec =  tmp3 & (~ tmp4) & slow_clk_enable;
  // vary the duty cycle using the debounced buttons above
