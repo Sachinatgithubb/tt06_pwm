@@ -14,10 +14,7 @@ module tt_um_PWM_Generator_Verilog (
     input  wire       ena,      // will go high when the design is enabled
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
-    input wire increase_duty;
-    input wire decrease_duty;
-    output wire PWM_OUT;
-);
+    );
 
   // All output pins must be assigned. If not used, assign to 0.
   //assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
