@@ -24,10 +24,10 @@ module tt_um_PWM_Generator_Verilog (
     wire decrease_duty;
     wire PWM_OUT;
 
-    assign ui_in[0]=increase_duty;
-    assign ui_in[1]=decrease_duty;
+    assign increase_duty=ui_in[0];
+    assign decrease_duty=ui_in[1];
     //assign ui_in[7:2]=0;
-    assign ui_out[0]=PWM_OUT[0];
+    assign PWM_OUT[0]=uo_out[0];
     //assign ui_out[7:1]=0;
     
  wire slow_clk_enable; // slow clock enable signal for debouncing FFs
